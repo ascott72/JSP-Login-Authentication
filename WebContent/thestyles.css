@@ -1,0 +1,110 @@
+@CHARSET "ISO-8859-1";
+
+html, body {
+	height: 100%;
+	min-width: 1080px;
+	min-height: 600px;
+}
+
+fieldset{
+	border: 2px solid whitesmoke;
+	border-radius:2px;
+	padding:20px;
+	
+}
+
+legend.legend-bold{
+	font: bold 18px Verdana,sans-serif;
+	color: white;
+	padding: 1em 5em;
+	border: 2px solid grey;
+	text-align: center;
+}
+
+label{
+	display: inline-block;
+	text-align: left;
+	width: 25%;
+}
+
+div#container {
+	position:relative;
+	overflow:hidden;
+    background-image: url('dottedbg.png');
+    background-size: 100% 100%;
+    height:100%;
+    width:100%;
+	display:flex;
+	justify-content:center;
+	
+}
+
+div#loginBox {	
+	position:relative;
+	top: 25%;
+	background-color: steelblue;
+	color: white;
+	box-sizing:border-box;	
+	border: 1px solid black;
+	border-radius: 2px;
+	box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.3);
+	padding: 10px 20px;
+    height: 330px;
+    width:500px;
+        
+}
+
+div#footer2 {
+	background-color:lightgrey;
+	font-family: Verdana,sans-serif;
+	border: .5px solid whitesmoke;
+	border-radius:2px;
+	padding: 10px 20px;
+	max-height:auto;
+	max-width:auto;
+}
+
+input.submit {
+	background-color: grey;
+	padding: 5px 10px;
+	color: white;
+	display: inline:block;
+	border-radius:4px;
+	border: 1px solid whitesmoke;
+	transition-duration:0.4s;
+}
+
+input.submit:hover {
+	background-color: lightgrey;
+	color:black;
+}
+
+input.theinput{
+	font-family: Verdana,sans-serif;
+	color:black;
+	width:50%;
+	boxsizing: border-box;
+	border:1px solid grey;
+	border-radius:4px;
+	padding: 5px 10px;
+}
+
+input.theinput:hover {
+	background-color: gainsboro;
+}
+
+.modal-header, h4, .close {
+      background-color: firebrick;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+  
+  div#footer{
+  background-color: lightgrey;
+  padding: 10px;
+  height:100px;
+  }

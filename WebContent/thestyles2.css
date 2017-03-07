@@ -1,0 +1,145 @@
+@CHARSET "ISO-8859-1";
+
+html, body {
+	height: 100%;
+	min-width: 1080px;
+	min-height: 600px;
+}
+
+fieldset{
+	border: 2px solid whitesmoke;
+	border-radius:2px;
+	padding:20px;
+	
+}
+label{
+	display: inline-block;
+	text-align: left;
+	width: 150px;
+}
+.admin-table {
+	position: relative;
+	top: 25%;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.3);
+    width: 700px;
+}
+
+.admin-table th {
+	text-align: left;
+    padding: 15px;
+}
+
+.admin-table td {
+	text-align: left;
+    padding: 8px;
+}
+
+.admin-table tr:nth-child(even){
+	background-color: #f2f2f2;
+}
+.admin-table tr:nth-child(odd){
+	background-color: white;
+}
+
+.admin-table th{
+	background-color: steelblue;
+	color: white;
+}
+
+input.theinput{
+	font-family: Verdana,sans-serif;
+	color:black;
+	width:200px;
+	boxsizing: border-box;
+	border:1px solid grey;
+	border-radius:4px;
+	padding: 5px 10px;
+}
+
+input.theinput:hover {
+	background-color: gainsboro;
+}
+
+.modal-header, h4, .close {
+      background-color: firebrick;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+    
+  div.container { 
+  	position: relative; 
+  	overflow:hidden;
+    background: url('strips.png') repeat fixed center;
+  	height:100%;
+  	width:100%;
+	display:flex;
+	justify-content:center;
+	boxsizing: border-box;
+	margin: 10px;
+  }
+  
+  div.content{
+  max-width: 1080px;
+  padding: 0px 100px;
+  border-radius: 4px;
+   box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.3);
+   boxsizing: border-box;
+  background: rgba(153, 204, 255, 0.7);
+
+  }
+  
+  div.footer{
+  background-color: lightgrey;
+  padding: 10px;
+  height: 100px;
+  }
+  
+.top-header{
+  background-color: black;
+  color: white;
+  text-align: center; 
+  padding:30px 20px; 
+  font-family: Arial,'Open Sans';
+  margin: 20px 10px;
+  border-radius: 4px;
+  boxsizing: border-box;
+  }
+  
+  .home-logo a{
+  background-image: url('homelogo.png');
+  background-size: cover;
+  display:block;
+  boxsizing: border-box;
+  width: 50px;
+  height: 50px;
+  left: 50%;
+  }
+  
+  .home-logo:hover a{
+  background-image: url('homelogo2.png');
+  }
+  
+  .welcome-text{
+  font: italic 30px  Georgia, serif;
+  }
+  
+  .back-home-btn{
+  background-color: black;
+	padding: 7px 12px;
+	color: white;
+	display: inline:block;
+	border-radius:4px;
+	border: 1px solid whitesmoke;
+	transition-duration:0.4s;
+  }
+   .back-home-btn:hover{
+   background-color: lightgrey;
+	color:black;
+   }
+  
