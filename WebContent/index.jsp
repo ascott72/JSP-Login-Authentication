@@ -16,6 +16,8 @@
 </head>
 <body>
 	<div id="container">
+	
+	<!-- Login Container -->
 		<div align="center" id="loginBox">
 			<form action='Login' method="post" id="userform">
 				<fieldset style= "margin:auto text-align:center">
@@ -35,6 +37,7 @@
 				
 			</form>
 			<br>
+			<!-- Login box Footer -->
 			<div id="footer2">
 				<p style="color:black"> New? <a href="#registerModal" id="registerLink">Register</a></p>			
 				<a href="Login?action=listUsers">Admin page</a>
@@ -52,6 +55,7 @@
 				       </div>
 				       <!-- Modal body-->
 				       <div class="modal-body" style="padding:30px 40px;">
+				       <!-- Register Form -->
 				        <form action='Register' method="post" id="regform">
 							<fieldset style= "margin:auto text-align:center">
 								<div>
@@ -85,6 +89,7 @@
 	  	
 	 	<script>
 			$(document).ready(function(){
+				//JQuery confirms password is equal to confirm password field
 				$("#regform").validate({
 					rules: {				
 						cfmpsword : 
@@ -93,12 +98,14 @@
 						}			
 					}				
 				});
+				//opens modal when user clicks register
 				$("#registerLink").click(function(){
 			        $("#registerModal").modal();
 			    });
 			});		
 		</script>
 	</div>
+	<!-- page Footer -->
 	<div id="footer"></div>
 </body>
 </html>

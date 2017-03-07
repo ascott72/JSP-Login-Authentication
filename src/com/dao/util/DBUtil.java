@@ -9,7 +9,7 @@ public class DBUtil {
 	private static Connection conn=null;
 	public static Connection getConnection()
 	{
-		if(conn !=null)
+		if(conn !=null) //if there is a connection already return it, otherwise establish one 
 			return conn;
 		else
 		{

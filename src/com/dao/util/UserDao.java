@@ -16,14 +16,15 @@ public class UserDao {
 
 	private Connection conn;
 	public UserDao() {
-		// TODO Auto-generated constructor stub
-		conn= DBUtil.getConnection();
+		
+		conn= DBUtil.getConnection();//connect to database
 	}
-	
+	//Validates login with user input
 	public boolean validateLogin(String em,String pw)
 	{
 		boolean canLogin=false;
 		
+		//Search database for email and password and return true if found
 		try
 		{
 			PreparedStatement ps = conn
@@ -32,7 +33,7 @@ public class UserDao {
 			ps.setString(2, pw);
 			
 			ResultSet rs = ps.executeQuery();
-			canLogin= rs.next();
+			canLogin= rs.next(); //true if found else false
 		}
 		catch(SQLException e)
 		{
@@ -42,13 +43,14 @@ public class UserDao {
 		return canLogin;
 	}
 	
+	//returns user info from specified email for session
 	public LoginModel userSession(String em)
 	{
-		LoginModel user=new LoginModel();
+		LoginModel user=new LoginModel(); //create new user object
 		try
 		{
 			PreparedStatement ps = conn
-					.prepareStatement("select * from TheUser where email=?");
+					.prepareStatement("select * from TheUser where email=?");//search database for email
 			ps.setString(1, em);
 			
 			ResultSet rs = ps.executeQuery();
@@ -68,12 +70,13 @@ public class UserDao {
 		return user;
 	}
 	
+	//Creates a new user with input data
 	public void createUser(LoginModel user)
 	{
 		try
 		{
 			PreparedStatement ps = conn
-					.prepareStatement("insert into TheUser(username,psword,email) values (?,?,?)");
+					.prepareStatement("insert into TheUser(username,psword,email) values (?,?,?)");//add user to database
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPsword());
 			ps.setString(3, user.getEmail());
@@ -84,13 +87,13 @@ public class UserDao {
 			e.printStackTrace();
 		}
 	}
-	
+	//update user with input data
 	public void editAccount(LoginModel user)
 	{
 		try
 		{
 			PreparedStatement ps = conn
-					.prepareStatement("update TheUser set username=?, psword=?" + " where userID=?");
+					.prepareStatement("update TheUser set username=?, psword=?" + " where userID=?"); //find user with id and update info
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPsword());
 			ps.setInt(3, user.getUserID());
@@ -102,6 +105,7 @@ public class UserDao {
 		}
 	}
 	
+	//Remove user from database with specified id
 	public void deleteAccount(int userid)
 	{
 		try
@@ -117,6 +121,7 @@ public class UserDao {
 		}
 	}
 	
+	//returns a list of all users
 	public List<LoginModel> listUsers()
 	{
 		List<LoginModel> userList = new ArrayList<LoginModel>();
@@ -143,6 +148,7 @@ public class UserDao {
 		return userList;
 	}
 	
+	//returns user info from specified id
 	public LoginModel getUserByID(int userid)
 	{
 		LoginModel user = new LoginModel();

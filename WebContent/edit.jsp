@@ -9,7 +9,8 @@
 <title>Edit User</title>
 </head>
 <body>
-<form action="Register" id="editform" method="post">
+<!--Page is Loaded in admin page modal from Login Servlet  -->
+				<form action="Register" id="editform" method="post">
 							<fieldset style= "margin:auto text-align:center">
 								<div>
 									<label for="uid" >ID</label>

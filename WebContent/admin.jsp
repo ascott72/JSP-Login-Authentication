@@ -16,10 +16,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+<!-- Page Header -->
 	<div class= "top-header">
+	<!-- Link to Home page -->
 		<span class= "home-logo"><a href="/JSPLogin"></a></span>
 		<h1 class="admin-header">Welcome Admin</h1>
 	</div>
+	<!-- User Table -->
 	<div class="container">
 		<div class="content">
 			<table class="admin-table">
@@ -33,7 +36,7 @@
 						<th></th>
 					</tr>
 				</thead>
-			
+			<!-- Data from Database -->
 				<tbody>
 					<c:forEach items="${users}" var="user">
 						<tr>
@@ -58,7 +61,7 @@
 				        <button type="button" class="close" data-dismiss="modal">&times;</button>
 				        <h4> Edit User</h4>
 				       </div>
-				       <!-- Modal body-->
+				       <!-- Modal body loads edit page-->
 				       <div class="modal-body" style="padding:30px 40px;">
 				       		<div class="load-body"></div>	       
 				        	
@@ -73,12 +76,12 @@
 		
 		<script>
 			$(document).ready(function(){
-					
+				//Sends id to servelet when Edit link is clicked
 				$(".edit-link").click(function(){
 					var userid= $(this).attr('id');
 					var action= 'edit';
 					var data= "action="+ action + "&userid=" +userid;
-					
+					//Request Get, load response(edit Form ) in modal
 					$.ajax({
 						type: "Get",
 						url: 'Login',
@@ -94,6 +97,7 @@
 			});
 		</script>
 	</div>
+	<!-- Page Footer -->
 	<div class="footer"> <button class="back-home-btn" onclick="history.back()">Back</button> </div>
 	
 </body>

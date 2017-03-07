@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "Logout", urlPatterns = { "/Logout" })
+@WebServlet(name = "Logout", urlPatterns = { "/Logout" })//set in web.xml
 public class LogoutController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
@@ -18,12 +18,13 @@ public class LogoutController extends HttpServlet{
 	{
 		PrintWriter pwOut = response.getWriter(); 
 		
+		//remove session
 		HttpSession session = request.getSession(false);
 		session.invalidate();
 		
+		//print confirmation message and redirect to home page
 		pwOut.print("You have successfully logged out");
 		response.setContentType("text/html");
-		//request.getRequestDispatcher("/index.jsp").include(request, response);
 		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");		
 		view.include(request, response);
 		pwOut.close();

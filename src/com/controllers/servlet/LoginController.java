@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.dao.util.UserDao;
 import com.model.dao.LoginModel;
 
-@WebServlet(name = "Login", urlPatterns = { "/Login" })
+@WebServlet(name = "Login", urlPatterns = { "/Login" }) //set in web.xml
 public class LoginController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private static String EDITPG= "/edit.jsp";
@@ -26,14 +26,15 @@ public class LoginController extends HttpServlet{
 	public LoginController()
 	{
 		super();
-		dao = new UserDao();
+		dao = new UserDao();//create new data object to interact with database
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException
 	{
-		String redirectPage="/index.jsp";
+		String redirectPage="/index.jsp"; //default page
 		String action = request.getParameter("action");
 		
+		//Removes user account from table and reloads table
 		if(action.equalsIgnoreCase("remove"))
 		{
 			int userid = Integer.parseInt(request.getParameter("userid"));
@@ -42,48 +43,48 @@ public class LoginController extends HttpServlet{
 			request.setAttribute("users", dao.listUsers());
 		}
 		
+		//Loads Admin page with database data in table
 		else if(action.equalsIgnoreCase("listUsers"))
 		{
 			redirectPage= ADMINPG;
 			request.setAttribute("users", dao.listUsers());
 		}
 		
+		//Finds user by ID and updates database and table with new data.
 		else if(action.equalsIgnoreCase("edit"))
 		{
 			redirectPage= EDITPG;
-			int userid = Integer.parseInt(request.getParameter("userid"));
-			LoginModel user = dao.getUserByID(userid);
-			request.setAttribute("user", user);
+			int userid = Integer.parseInt(request.getParameter("userid")); //get this objects id
+			LoginModel user = dao.getUserByID(userid); //user object
+			request.setAttribute("user", user); //sends user data to jsp
 		}
 		
-//		else if(action.equalsIgnoreCase("register"))
-//		{
-//			redirectPage= REGISTPG;
-//		}
-		
 		RequestDispatcher view = request.getRequestDispatcher(redirectPage);
-		view.forward(request, response);
+		view.forward(request, response); //forward response to request
 	}
 	
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
 	{
 		PrintWriter pwOut = response.getWriter(); 
-				
+		//get input from jsp		
 		String em=request.getParameter("email");
 		String pw =request.getParameter("psword");
 		
 		
-	
+		//Validate Login with input
 		if(dao.validateLogin(em, pw))
 		{
+			//create session and store variables
 			LoginModel user= dao.userSession(em);
 			HttpSession session = request.getSession();
 	        session.setAttribute("username", user.getUsername());
 	        session.setAttribute("email", em);
+	        //load welcome page with session data
 			RequestDispatcher view = request.getRequestDispatcher(WELCMPG);		
 			view.forward(request, response);
 			
 		}
+		//if input is not stored in database print error message and reload page
 		else
 		{
 			pwOut.print("<p style=\"color:red\">Incorrect Username or Password!</p>");
